@@ -30,9 +30,10 @@ export default function Cursor() {
     let hovering: HTMLElement | null = null;
 
     const onMove = (e: PointerEvent) => {
-      const target = (e.target as HTMLElement | null)?.closest<HTMLElement>(
-        "[data-magnetic], a, button",
-      );
+      const target =
+        (e.target as HTMLElement | null)?.closest<HTMLElement>(
+          "[data-magnetic], a, button",
+        ) ?? null;
 
       if (target !== hovering) {
         hovering = target;
