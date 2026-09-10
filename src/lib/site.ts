@@ -39,6 +39,7 @@ export const projects: Project[] = [
       { label: "Schedules searched", value: "510" },
       { label: "Runtime, CPU only", value: "~7s" },
     ],
+    repo: "https://github.com/taha1202/cascade",
     status: "active",
   },
   {
@@ -56,10 +57,46 @@ export const projects: Project[] = [
       { label: "Steps re-executed", value: "Zero" },
       { label: "CI matrix", value: "6 jobs green" },
     ],
+    repo: "https://github.com/taha1202/anchor",
     status: "active",
   },
   {
     index: "03",
+    title: "ELD Tracker",
+    kind: "Full stack · Rules engine",
+    year: "2025",
+    summary:
+      "Hours of Service compliance for commercial drivers. The interesting part isn't the CRUD, it's a rules engine implementing a legally defined sliding-window constraint where an off-by-one is a compliance violation.",
+    detail:
+      "US FMCSA regulations limit driving time across overlapping windows, so duty status has to be evaluated as a rolling calculation over history rather than a running total. That logic carries its own test suite, separate from the API tests, because the failure mode is silent and legal rather than a crash. Frontend plots duty status over time and maps routes; the backend is Django REST with a Postgres store and environment-split settings.",
+    stack: ["Django", "DRF", "PostgreSQL", "React", "Material UI", "Leaflet"],
+    metrics: [
+      { label: "Core", value: "HOS rules engine" },
+      { label: "Dedicated test suites", value: "4" },
+      { label: "Deployment", value: "Declarative" },
+    ],
+    repo: "https://github.com/taha1202/eld-tracker",
+    status: "shipped",
+  },
+  {
+    index: "04",
+    title: "Recruitment Platform",
+    kind: "Backend · .NET",
+    year: "2025",
+    summary:
+      "A seven-project ASP.NET Core solution where the layering is real: domain logic, data access, identity and background jobs are separate assemblies rather than folders in one app.",
+    detail:
+      "Areas split the Administrator, Employer and Talent domains at the routing level. Auth runs on IdentityServer4 with OAuth2 token validation, payments go through Stripe with a dedicated webhook controller, and scheduled work is handled by a background job runner rather than cron. Rate limiting, distributed SQL Server caching, API versioning and bulk CSV/Excel import were all production requirements rather than additions.",
+    stack: ["ASP.NET Core", "EF Core", "IdentityServer4", "Stripe", "MSSQL"],
+    metrics: [
+      { label: "Solution projects", value: "7" },
+      { label: "Auth", value: "OAuth2 / OIDC" },
+      { label: "Routing domains", value: "4 areas" },
+    ],
+    status: "shipped",
+  },
+  {
+    index: "05",
     title: "FraudHunt",
     kind: "Applied machine learning",
     year: "2025",
@@ -76,15 +113,15 @@ export const projects: Project[] = [
     status: "shipped",
   },
   {
-    index: "04",
+    index: "06",
     title: "Document Extraction Pipeline",
-    kind: "Production · ByteCorp",
+    kind: "Production · Applied AI",
     year: "2025",
     summary:
-      "An agent-based pipeline that pulls structured data out of long, messy, multi-page documents — and runs unattended through authentication that was never designed to be automated.",
+      "An agent-based pipeline that pulls structured data out of long, messy, multi-page documents and runs unattended through authentication that was never designed to be automated.",
     detail:
-      "The hard part was never extraction; it was the four external systems in front of the documents. Automating Microsoft Graph two-factor flows meant the pipeline could finally run overnight without a human relaying codes. Work that took an analyst hours now finishes in under ten minutes.",
-    stack: ["Python", "FastAPI", "Microsoft Graph", "Azure Blob", "SQL MI"],
+      "The hard part was never extraction, it was the systems standing in front of the documents. Automating the two-factor flow meant the pipeline could finally run overnight without a person relaying codes. Work that took an analyst hours now finishes in under ten minutes.",
+    stack: ["Python", "FastAPI", "Azure Blob", "SQL MI"],
     metrics: [
       { label: "Hours to", value: "< 10 min" },
       { label: "Extraction accuracy", value: "80%+" },

@@ -127,13 +127,28 @@ export default function ProjectEntry({ project }: { project: Project }) {
                 ))}
               </div>
 
-              <div className="meta flex items-center gap-2">
-                <span
-                  className={`inline-block h-[6px] w-[6px] rounded-full ${
-                    project.status === "shipped" ? "bg-ember" : "bg-faint"
-                  }`}
-                />
-                {STATUS_LABEL[project.status]}
+              <div className="meta flex flex-wrap items-center gap-x-5 gap-y-2">
+                <span className="flex items-center gap-2">
+                  <span
+                    className={`inline-block h-[6px] w-[6px] rounded-full ${
+                      project.status === "shipped" ? "bg-ember" : "bg-faint"
+                    }`}
+                  />
+                  {STATUS_LABEL[project.status]}
+                </span>
+
+                {project.repo && (
+                  <a
+                    href={project.repo}
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    data-magnetic
+                    onClick={(e) => e.stopPropagation()}
+                    className="link-wipe text-ink-soft hover:text-ink"
+                  >
+                    Source ↗
+                  </a>
+                )}
               </div>
             </div>
           </div>
