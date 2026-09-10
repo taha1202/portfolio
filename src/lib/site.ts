@@ -26,18 +26,18 @@ export type Project = {
 export const projects: Project[] = [
   {
     index: "01",
-    title: "Code Archaeologist",
-    kind: "Developer tooling",
+    title: "Cascade",
+    kind: "Research · Developer tooling",
     year: "2026",
     summary:
-      "Point it at a repository and it reconstructs intent — building a knowledge graph from syntax trees, call edges, and a decade of commit history, then answers why code exists rather than what it says.",
+      "Chaos engineering for LLM agents. It injects semantically distinct faults at an agent's tool boundary, then searches for the failure modes single-fault testing structurally cannot find.",
     detail:
-      "Most code search tells you where a symbol appears. This tells you who introduced it, which incident it was written to survive, and what silently breaks if you delete it. Parsing runs on tree-sitter across seven languages; retrieval is hybrid BM25 plus quantised ONNX embeddings, so the whole pipeline stays on CPU with no GPU dependency.",
-    stack: ["Python", "tree-sitter", "DuckDB", "ONNX Runtime", "FastAPI", "Next.js"],
+      "The claim is that agent robustness is not compositional: an agent that survives fault A and survives fault B can still fail reliably on both together. Against a reference agent with retry logic, a cache fallback, and response validation, the experiment found 27 such interaction failures — every one pairing a persistent primary outage with a degraded fallback, the path that by construction is least exercised. Single-fault testing scores that same agent at 70% robust and finds none of them.",
+    stack: ["Python", "Pydantic", "Typer", "pytest", "delta-debugging"],
     metrics: [
-      { label: "Languages parsed", value: "7" },
-      { label: "Cold index, 50k LOC", value: "< 90s" },
-      { label: "GPU required", value: "None" },
+      { label: "Interaction failures", value: "27" },
+      { label: "Schedules searched", value: "510" },
+      { label: "Runtime, CPU only", value: "~7s" },
     ],
     status: "active",
   },
