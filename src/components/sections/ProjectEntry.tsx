@@ -84,8 +84,8 @@ export default function ProjectEntry({ project }: { project: Project }) {
         <span className="meta flex items-center gap-4 whitespace-nowrap">
           <span className="tabular-nums">{project.year}</span>
           <span
-            className="inline-block transition-transform duration-500"
-            style={{ transform: open ? "rotate(45deg)" : "rotate(0deg)" }}
+            className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-rule text-ink transition-[transform,background-color,border-color] duration-500 group-hover:border-ember group-hover:bg-ember group-hover:text-paper"
+            style={{ transform: open ? "rotate(135deg)" : "rotate(0deg)" }}
             aria-hidden="true"
           >
             +

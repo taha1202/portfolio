@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import RevealText from "@/components/motion/RevealText";
+import SignalPanel from "./SignalPanel";
 import { gsap, useGsapContext } from "@/lib/motion";
 import { site } from "@/lib/site";
 
@@ -48,7 +49,7 @@ export default function Hero() {
     <div
       ref={root}
       id="top"
-      className="relative flex min-h-[100svh] flex-col justify-end px-[var(--edge)] pb-14 pt-32"
+      className="relative flex min-h-[100svh] flex-col justify-center px-[var(--edge)] pb-16 pt-28"
     >
       <div data-hero-inner className="mx-auto w-full max-w-[1440px]">
         <div
@@ -70,16 +71,26 @@ export default function Hero() {
           </span>
         </div>
 
-        <h1 className="display text-[clamp(3rem,12.5vw,11.5rem)]">
-          <RevealText text="Muhammad" immediate delay={0.1} as="span" />
-          <RevealText
-            text="Taha"
-            immediate
-            delay={0.22}
-            as="span"
-            className="block italic text-ember"
-          />
-        </h1>
+        <div className="flex flex-wrap items-end justify-between gap-x-10 gap-y-8">
+          <h1 className="display text-[clamp(3rem,12.5vw,11.5rem)]">
+            <RevealText text="Muhammad" immediate delay={0.1} as="span" />
+            <RevealText
+              text="Taha"
+              immediate
+              delay={0.22}
+              as="span"
+              className="block italic text-ember"
+            />
+          </h1>
+
+          <div className="mb-4 hidden lg:block">
+            <SignalPanel />
+          </div>
+        </div>
+
+        <div className="mt-10 lg:hidden">
+          <SignalPanel />
+        </div>
 
         <div
           data-hero-rule

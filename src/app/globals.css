@@ -85,6 +85,12 @@ html {
   background: var(--paper);
 }
 
+/* Sticky header clearance for in-page anchors. */
+section[id],
+div[id] {
+  scroll-margin-top: 6rem;
+}
+
 body {
   background: var(--paper);
   color: var(--ink);
