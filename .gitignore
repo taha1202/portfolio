@@ -41,3 +41,7 @@ yarn-error.log*
 next-env.d.ts
 
 shots/
+
+# Agent tooling files (regenerated locally by next dev)
+AGENTS.md
+CLAUDE.md
