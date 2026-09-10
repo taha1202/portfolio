@@ -43,18 +43,18 @@ export const projects: Project[] = [
   },
   {
     index: "02",
-    title: "Durable Agent Runtime",
+    title: "Anchor",
     kind: "Systems / infrastructure",
     year: "2026",
     summary:
-      "An execution engine for LLM agents that survives crashes. Every step is journalled, so a run can resume mid-flight, fork at any point, or be replayed backwards for debugging.",
+      "Durable execution for LLM agents. Steps are journalled as they complete, so a run killed halfway through resumes where it stopped instead of starting over.",
     detail:
-      "Agent frameworks treat a run as an in-memory loop — kill the process and the work evaporates. This models a run as an append-only event log with content-addressed step results. Deterministic replay makes a failure reproducible instead of anecdotal, and time-travel lets you rewind to step nine, change the tool response, and branch a new timeline.",
-    stack: ["Python", "asyncio", "SQLite WAL", "Pydantic", "OpenTelemetry"],
+      "Agent frameworks treat a run as an in-memory loop, which is fine until step nine of twelve fails and the eight expensive calls before it evaporate with the process. Anchor derives state from an append-only log rather than storing it separately, because two sources of truth can disagree after a crash. That one decision makes recovery and time travel the same mechanism: resuming folds the whole log, inspecting history folds a prefix. Durability is tested by spawning real subprocesses that hard-exit mid-run, on both Linux and Windows.",
+    stack: ["Python", "Pydantic", "event sourcing", "JSONL", "pytest"],
     metrics: [
-      { label: "Resume after kill -9", value: "Lossless" },
-      { label: "Replay determinism", value: "Byte-exact" },
-      { label: "Step overhead", value: "~2ms" },
+      { label: "Resume after hard kill", value: "Lossless" },
+      { label: "Steps re-executed", value: "Zero" },
+      { label: "CI matrix", value: "6 jobs green" },
     ],
     status: "active",
   },
